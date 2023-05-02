@@ -24,8 +24,8 @@
     <participant name="Fluid">
       <use-mesh name="Fluid-Mesh" provide="yes" />
       <use-mesh name="Solid-Mesh" from="Solid" />
-      <read-data name="Heat-Flux" mesh="Fluid-Mesh" />
-      <write-data name="Temperature" mesh="Fluid-Mesh" />
+      <read-data name="Temperature" mesh="Fluid-Mesh" />
+      <write-data name="Heat-Flux" mesh="Fluid-Mesh" />
       <mapping:nearest-neighbor
         direction="read"
         from="Solid-Mesh"
@@ -42,8 +42,8 @@
         from="Fluid-Mesh"
         to="Solid-Mesh"
         constraint="consistent" />
-      <read-data name="Temperature" mesh="Solid-Mesh" />
-      <write-data name="Heat-Flux" mesh="Solid-Mesh" />
+      <read-data name="Heat-Flux" mesh="Solid-Mesh" />
+      <write-data name="Temperature" mesh="Solid-Mesh" />
     </participant>
 
     <m2n:sockets from="Fluid" to="Solid" network="ib0" exchange-directory=".." />
@@ -53,11 +53,11 @@
       <max-time value="1.01" />
       <max-iterations value="30" />
       <participants first="Fluid" second="Solid" />
-      <exchange data="Temperature" mesh="Fluid-Mesh" from="Fluid" to="Solid" />
-      <exchange data="Heat-Flux" mesh="Solid-Mesh" from="Solid" to="Fluid" />
-      <relative-convergence-measure limit="1.0e-5" data="Temperature" mesh="Fluid-Mesh" />
+      <exchange data="Heat-Flux" mesh="Fluid-Mesh" from="Fluid" to="Solid" />
+      <exchange data="Temperature" mesh="Solid-Mesh" from="Solid" to="Fluid" initialize="yes"/>
+      <relative-convergence-measure limit="1.0e-5" data="Heat-Flux" mesh="Fluid-Mesh" />
       <acceleration:aitken>
-        <data mesh="Solid-Mesh" name="Heat-Flux" />
+        <data mesh="Solid-Mesh" name="Temperature" />
         <initial-relaxation value="0.5" />
       </acceleration:aitken>
     </coupling-scheme:serial-implicit>

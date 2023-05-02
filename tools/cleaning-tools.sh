@@ -118,6 +118,18 @@ clean_su2() {
     )
 }
 
+clean_jots() {
+    (
+	set -e -u
+	cd "$1"
+	echo "--- Cleaning up JOTS case in $(pwd)"
+	rm -rfv ./ParaView/
+	rm -rfv ./preCICE-output/
+	clean_precice_logs .
+    )
+}
+
+
 clean_aste() {
     (
         set -e -u

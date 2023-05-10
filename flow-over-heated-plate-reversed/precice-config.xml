@@ -46,11 +46,11 @@
       <write-data name="Temperature" mesh="Solid-Mesh" />
     </participant>
 
-    <m2n:sockets from="Fluid" to="Solid" network="ib0" exchange-directory=".." />
+    <m2n:sockets from="Fluid" to="Solid" exchange-directory=".." />
 
     <coupling-scheme:serial-implicit>
       <time-window-size value="0.01" />
-      <max-time value="1.01" />
+      <max-time value="1.00" />
       <max-iterations value="30" />
       <participants first="Fluid" second="Solid" />
       <exchange data="Heat-Flux" mesh="Fluid-Mesh" from="Fluid" to="Solid" />

@@ -4,7 +4,7 @@ import numpy as np
 
 
 def vtk_to_dict(case):
-    vtkFileName = "solid-{}/precice-exports/Fluid-Mesh-Solid.dt100.vtk".format(case)
+    vtkFileName = str(case + "Fluid-Mesh-Solid.dt100.vtk").format(case)
     # read the vtk file as an unstructured grid
     reader = vtk.vtkUnstructuredGridReader()
     reader.SetFileName(vtkFileName)
@@ -40,26 +40,20 @@ def vtk_to_dict(case):
     return data_dict
 
 
-cases = []
-cases.append('fenics')
-cases.append('openfoam')
-cases.append('nutils')
-cases.append('dunefem')
-
 case_labels = {
-    'fenics': 'OpenFOAM-FEniCS',
-    'openfoam': 'OpenFOAM-OpenFOAM',
-    'nutils': 'OpenFOAM-Nutils',
-    'dunefem': 'OpenFOAM-DuneFem'}
-styles = [':', '-', '--']
+    'reference-results/fluid-openfoam_solid-fenics/': 'OpenFOAM-FEniCS',
+    'reference-results/fluid-openfoam_solid-openfoam/': 'OpenFOAM-OpenFOAM',
+    'reference-results/fluid-openfoam_solid-nutils/': 'OpenFOAM-Nutils',
+    'solid-jots/precice-exports/': "SU2-JOTS"}
+styles = [':', '-', '--', "x"]
 colors = ['r', 'b', 'g', 'k']
 i = 0
 
-for case in cases:
+for case in case_labels.keys():
     case_data = vtk_to_dict(case)
     x, t = [p[0] for p in case_data.keys()], np.array(list(case_data.values()))
     theta = (t - 300) / (310 - 300)
-    plt.plot(x, theta, colors[i % 4] + styles[i % 3], label=case_labels[case])
+    plt.plot(x, theta, colors[i % 4] + styles[i % 4], label=case_labels[case])
     i += 1
 
 plt.ylabel("Theta")

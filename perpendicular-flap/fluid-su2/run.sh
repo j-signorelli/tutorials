@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e -u
 
-SU2_preCICE_FSI.py -f euler_config_unsteady.cfg -d 2 --parallel
+. ../../tools/log.sh
+exec > >(tee --append "$LOGFILE") 2>&1
+
+SU2_preCICE_FSI.py -f euler_config_unsteady.cfg --parallel
+
+close_log

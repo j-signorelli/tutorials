@@ -13,6 +13,7 @@ out
 *.vtk
 *.vtu
 *.pvd
+*.pvtu
 
 # preCICE
 precice-profiling/

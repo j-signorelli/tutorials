@@ -20,6 +20,7 @@ def vtk_to_dict(case):
     data_names = []
     i = 0
     max_i = data.GetPointData().GetNumberOfArrays()
+    data_id = -1
     while i < max_i:
         this_data_name = data.GetPointData().GetArray(i).GetName()
         data_names.append(this_data_name)
@@ -30,7 +31,7 @@ def vtk_to_dict(case):
 
     data_dict = {}
 
-    if not data_id:
+    if data_id == -1:
         raise Exception(
             "For file {} name {} not found. Only the following names are available: {}. "
             "Aborting!".format(vtkFileName, name, data_names))
@@ -44,16 +45,23 @@ case_labels = {
     'reference-results/fluid-openfoam_solid-fenics/': 'OpenFOAM-FEniCS',
     'reference-results/fluid-openfoam_solid-openfoam/': 'OpenFOAM-OpenFOAM',
     'reference-results/fluid-openfoam_solid-nutils/': 'OpenFOAM-Nutils',
-    'solid-jots/precice-exports/': "SU2-JOTS"}
-styles = [':', '-', '--', "x"]
-colors = ['r', 'b', 'g', 'k']
+    'solid-jots/precice-exports/': "SU2-JOTS",
+    'solid-nutils/precice-exports/': 'SU2-Nutils',
+    '../flow-over-heated-plate-two-meshes/solid-calculix/': "SU2-CCX"}
+styles = [':', '-', '--', 'x', '.']
+colors = ['r', 'b', 'g', 'k', 'o']
 i = 0
 
 for case in case_labels.keys():
     case_data = vtk_to_dict(case)
     x, t = [p[0] for p in case_data.keys()], np.array(list(case_data.values()))
+    combined = list(zip(x,t))
+    combined.sort()
+    x, t = zip(*combined)
+    x = np.array(x)
+    t = np.array(t)
     theta = (t - 300) / (310 - 300)
-    plt.plot(x, theta, colors[i % 4] + styles[i % 4], label=case_labels[case])
+    plt.plot(x, theta, colors[i % 4] + styles[i % 3], label=case_labels[case])
     i += 1
 
 plt.ylabel("Theta")

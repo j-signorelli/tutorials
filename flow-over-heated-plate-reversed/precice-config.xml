@@ -7,24 +7,22 @@
       enabled="true" />
   </log>
 
-  <solver-interface dimensions="2">
     <data:scalar name="Temperature" />
     <data:scalar name="Heat-Flux" />
 
-    <mesh name="Fluid-Mesh">
+    <mesh name="Fluid-Mesh" dimensions="2">
       <use-data name="Temperature" />
       <use-data name="Heat-Flux" />
     </mesh>
 
-    <mesh name="Solid-Mesh">
+    <mesh name="Solid-Mesh" dimensions="2">
       <use-data name="Temperature" />
       <use-data name="Heat-Flux" />
     </mesh>
 
     <participant name="Fluid">
-      <export:csv directory="preCICE-output"  every-n-time-windows="50"/>
-      <use-mesh name="Fluid-Mesh" provide="yes" />
-      <use-mesh name="Solid-Mesh" from="Solid" />
+      <provide-mesh name="Fluid-Mesh" />
+      <receive-mesh name="Solid-Mesh" from="Solid" />
       <read-data name="Temperature" mesh="Fluid-Mesh" />
       <write-data name="Heat-Flux" mesh="Fluid-Mesh" />
       <mapping:nearest-neighbor
@@ -35,8 +33,9 @@
     </participant>
 
     <participant name="Solid">
-      <use-mesh name="Fluid-Mesh" from="Fluid" />
-      <use-mesh name="Solid-Mesh" provide="yes" />
+      <export:vtk directory="precice-exports" />
+      <receive-mesh name="Fluid-Mesh" from="Fluid" />
+      <provide-mesh name="Solid-Mesh" />
       <mapping:nearest-neighbor
         direction="read"
         from="Fluid-Mesh"
@@ -46,7 +45,7 @@
       <write-data name="Temperature" mesh="Solid-Mesh" />
     </participant>
 
-    <m2n:sockets from="Fluid" to="Solid" exchange-directory=".." />
+    <m2n:sockets acceptor="Fluid" connector="Solid" exchange-directory=".." />
 
     <coupling-scheme:serial-implicit>
       <time-window-size value="0.01" />
@@ -61,5 +60,5 @@
         <initial-relaxation value="0.5" />
       </acceleration:aitken>
     </coupling-scheme:serial-implicit>
-  </solver-interface>
+
 </precice-configuration>

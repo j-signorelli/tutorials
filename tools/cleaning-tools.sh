@@ -152,6 +152,17 @@ clean_jots() {
     )
 }
 
+clean_pc2() {
+    (
+    set -e -u
+    cd "$1"
+	echo "--- Cleaning up PC2 case in $(pwd)"
+    rm -rfv ./PlasCom2*
+    clean_precice_logs .
+    clean_case_logs .
+    )
+
+}
 
 clean_aste() {
     (

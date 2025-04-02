@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<!DOCTYPE Xdmf SYSTEM "Xdmf.dtd" []>
+<Xdmf Version="2.0"> <Domain>
+  <Grid Name="grid1" GridType="Uniform">
+    <Time Value="0" />
+   <Topology TopologyType="2DSMesh" Dimensions="59 299" />
+    <Geometry GeometryType="X_Y">
+     <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+      PlasCom2_000000000.h5://PlasCom2/Geometry/cmgeom/geom2dM1/X
+     </DataItem>
+     <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+      PlasCom2_000000000.h5://PlasCom2/Geometry/cmgeom/geom2dM1/Y
+     </DataItem>
+    </Geometry>
+     <Attribute Name="rho" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/rho
+      </DataItem>
+     </Attribute>
+     <Attribute Name="rhoV-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/rhoV-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="rhoV-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/rhoV-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="rhoE" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/rhoE
+      </DataItem>
+     </Attribute>
+     <Attribute Name="velocity-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/velocity-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="velocity-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/velocity-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="sconn-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Int" Precision="4" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/sconn-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="sconn-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Int" Precision="4" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/sconn-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="imask" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Int" Precision="4" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/imask
+      </DataItem>
+     </Attribute>
+     <Attribute Name="sconn2-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Int" Precision="4" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/sconn2-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="sconn2-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Int" Precision="4" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/sconn2-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="gridMetrics-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/gridMetrics-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="gridMetrics-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/gridMetrics-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="gridMetrics-3" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/gridMetrics-3
+      </DataItem>
+     </Attribute>
+     <Attribute Name="gridMetrics-4" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/gridMetrics-4
+      </DataItem>
+     </Attribute>
+     <Attribute Name="gridJacobian-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/gridJacobian-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="gridJacobian-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/gridJacobian-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="temperature" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/temperature
+      </DataItem>
+     </Attribute>
+     <Attribute Name="pressure" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/pressure
+      </DataItem>
+     </Attribute>
+     <Attribute Name="switchFunction-1" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/switchFunction-1
+      </DataItem>
+     </Attribute>
+     <Attribute Name="switchFunction-2" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/switchFunction-2
+      </DataItem>
+     </Attribute>
+     <Attribute Name="switchFunction-3" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/switchFunction-3
+      </DataItem>
+     </Attribute>
+     <Attribute Name="dOI" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Float" Precision="8" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/dOI
+      </DataItem>
+     </Attribute>
+     <Attribute Name="LESMask" AttributeType="Scalar" Center="Node">      <DataItem Dimensions="59 299" NumberType="Int" Precision="4" Format="HDF">
+       PlasCom2_000000000.h5://PlasCom2/Simulation/Beam/grid1/LESMask
+      </DataItem>
+     </Attribute>
+  </Grid>
+ </Domain>
+</Xdmf>

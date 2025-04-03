@@ -21,7 +21,6 @@
     </mesh>
 
     <participant name="Fluid">
-    <export:vtu directory="precice-exports" every-n-time-windows="1"/>
       <provide-mesh name="Fluid-Mesh" />
       <receive-mesh name="Solid-Mesh" from="Solid" />
       <read-data name="Temperature" mesh="Fluid-Mesh" />
@@ -34,7 +33,7 @@
     </participant>
 
     <participant name="Solid">
-      <!--<export:vtp directory="precice-exports" every-n-time-windows="1"/>-->
+      <export:vtk directory="precice-exports" every-n-time-windows="1000"/>
       <receive-mesh name="Fluid-Mesh" from="Fluid" />
       <provide-mesh name="Solid-Mesh" />
       <mapping:nearest-neighbor
@@ -50,8 +49,7 @@
 
     <coupling-scheme:serial-explicit>
       <time-window-size value="1e-5" />
-      <max-time-windows value="1"/>
-      <!-- <max-time value="1.00" /> -->
+      <max-time value="1.00" />
       <participants first="Fluid" second="Solid" />
       <exchange data="Heat-Flux" mesh="Fluid-Mesh" from="Fluid" to="Solid" />
       <exchange data="Temperature" mesh="Solid-Mesh" from="Solid" to="Fluid" initialize="yes"/>

@@ -33,7 +33,7 @@
     </participant>
 
     <participant name="Solid">
-      <export:vtk directory="precice-exports" every-n-time-windows="1000"/>
+      <export:vtk directory="precice-exports" every-n-time-windows="10000"/>
       <receive-mesh name="Fluid-Mesh" from="Fluid" />
       <provide-mesh name="Solid-Mesh" />
       <mapping:nearest-neighbor

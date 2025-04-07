@@ -2,14 +2,26 @@
 #!/usr/bin/env python3
 import vtk
 from matplotlib import pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
 import numpy as np
 import os
 
 def vtk_to_dict(case):
     vtkFileName = "solid-{}/precice-exports/Fluid-Mesh-Solid.dt100.vtk".format(case)
     if not os.path.exists(vtkFileName):
-        print("No file found for " + vtkFileName)
-        return {} # return empty dict if file not found
+        print("No file found for " + vtkFileName + ". Searching for reference results...")
+        
+        vtkFileName = "reference-results/fluid-openfoam_solid-{}/Fluid-Mesh-Solid.dt100.vtk".format(case)
+        if not os.path.exists(vtkFileName):
+            
+            vtkFileName = "reference-results/fluid-su2_solid-{}/Fluid-Mesh-Solid.dt100.vtk".format(case)
+            
+            if not os.path.exists(vtkFileName):
+                print("\tNone found!")
+                return {} # return empty dict if file not found
+    
+    print("\tFound at: " + vtkFileName)
     
     # read the vtk file as an unstructured grid
     reader = vtk.vtkUnstructuredGridReader()
@@ -30,10 +42,12 @@ def vtk_to_dict(case):
 
 def main():
     case_labels = {
+        'jots': 'Fluid-JOTS',
         'fenics': 'Fluid-FEniCS',
         'openfoam': 'Fluid-OpenFOAM',
         'nutils': 'Fluid-Nutils',
-        'dunefem': 'Fluid-DuneFem'}
+        'dunefem': 'Fluid-DuneFem',
+        'ccx': "Fluid-CalculiX"}
     styles = [':', '-', '--']
     colors = ['r', 'b', 'g', 'k']
 

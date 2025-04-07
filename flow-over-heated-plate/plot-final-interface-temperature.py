@@ -3,7 +3,7 @@
 import vtk
 from matplotlib import pyplot as plt
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('Qt5Agg')
 import numpy as np
 import os
 

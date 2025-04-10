@@ -34,7 +34,7 @@ def main():
         "../flow-over-heated-plate/reference-results/fluid-openfoam_solid-nutils/Fluid-Mesh-Solid.dt100.vtk": "OpenFOAM-nutils",
         "../flow-over-heated-plate/reference-results/fluid-su2_solid-ccx/Fluid-Mesh-Solid.dt100.vtk": "SU2-CCX",
         "../flow-over-heated-plate/reference-results/fluid-su2_solid-jots/Fluid-Mesh-Solid.dt100.vtk": "SU2-JOTS",
-        "solid-jots/precice-exports/Solid-Mesh-Solid.dt100000.vtk": "PC2-JOTS"}
+        "solid-jots/precice-exports/Solid-Mesh-Solid.dt1000000.vtk": "PC2-JOTS"}
     styles = [':', '-', '--']
     colors = ['r', 'b', 'g', 'k']
 

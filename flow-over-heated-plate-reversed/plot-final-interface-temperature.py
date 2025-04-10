@@ -2,11 +2,12 @@
 #!/usr/bin/env python3
 import vtk
 from matplotlib import pyplot as plt
+import matplotlib
+matplotlib.use("Qt5Agg")
 import numpy as np
 import os
 
-def vtk_to_dict(case):
-    vtkFileName = "solid-{}/precice-exports/Fluid-Mesh-Solid.dt100.vtk".format(case)
+def vtk_to_dict(vtkFileName):
     if not os.path.exists(vtkFileName):
         print("No file found for " + vtkFileName)
         return {} # return empty dict if file not found
@@ -30,7 +31,10 @@ def vtk_to_dict(case):
 
 def main():
     case_labels = {
-        'jots': 'Fluid-JOTS'}
+        "../flow-over-heated-plate/reference-results/fluid-openfoam_solid-nutils/Fluid-Mesh-Solid.dt100.vtk": "OpenFOAM-nutils",
+        "../flow-over-heated-plate/reference-results/fluid-su2_solid-ccx/Fluid-Mesh-Solid.dt100.vtk": "SU2-CCX",
+        "../flow-over-heated-plate/reference-results/fluid-su2_solid-jots/Fluid-Mesh-Solid.dt100.vtk": "SU2-JOTS",
+        "solid-jots/precice-exports/Solid-Mesh-Solid.dt100000.vtk": "PC2-JOTS"}
     styles = [':', '-', '--']
     colors = ['r', 'b', 'g', 'k']
 
@@ -54,6 +58,7 @@ def main():
     plt.xlabel("x-coordinate along coupling interface")
     plt.legend()
     plt.show()
+
 
 if __name__ == '__main__':
     main()

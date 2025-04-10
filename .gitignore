@@ -18,6 +18,9 @@ out
 *.h5
 *.xdmf
 
+# PC2
+PlasCom2Timing*
+
 # preCICE
 precice-profiling/
 precice-run/
